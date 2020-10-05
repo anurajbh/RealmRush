@@ -6,11 +6,13 @@ using UnityEngine;
 public class Pathfinder : MonoBehaviour
 {
     public Dictionary<Vector2Int, Waypoint> grid = new Dictionary<Vector2Int, Waypoint>();
-    public Waypoint start;
-    public Waypoint end;
+    public Waypoint startWaypoint;
+    public Waypoint endWaypoint;
     Vector2Int[] directions = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
     Queue<Waypoint> waypointsQueue = new Queue<Waypoint>();
-    [SerializeField] bool isEndFound = false;//todo make private
+    bool isEndFound = false;
+    Waypoint currentWaypoint;
+    List<Waypoint> path = new List<Waypoint>();
     void LoadTheBlocks()
     {
         Waypoint[] waypoints = FindObjectsOfType<Waypoint>();
@@ -22,45 +24,56 @@ public class Pathfinder : MonoBehaviour
             if(!isOverlapping)
             {
                 grid.Add(waypoint.GetGridPos(), waypoint);
-                print("Adding Waypoint " + grid[waypoint.GetGridPos()] + " to Dictionary");//todo remove later
             }
 
         }
     }
-    private void Start()
+    public List<Waypoint> GetPath()
     {
+        startWaypoint.exploredFrom = startWaypoint;
         LoadTheBlocks();
         ColourStartAndEnd();
-        Pathfind();
+        BreadthFirstSearch();
+        CreateThePath();
+        return path;
+    }
+    private void CreateThePath()
+    {
+        path.Add(endWaypoint);
+        Waypoint previousWaypoint = endWaypoint.exploredFrom;
+        while(previousWaypoint!=startWaypoint)
+        {
+            path.Add(previousWaypoint);
+            previousWaypoint = previousWaypoint.exploredFrom;
+        }
+        path.Add(previousWaypoint);
+        path.Reverse();
     }
 
-    private void Pathfind()//implementation of the BFS algorithm
+    private void BreadthFirstSearch()//implementation of the BFS algorithm
     {
-        print("Enqueing " + grid[start.GetGridPos()]);
-        waypointsQueue.Enqueue(grid[start.GetGridPos()]);
+        waypointsQueue.Enqueue(grid[startWaypoint.GetGridPos()]);
         while(waypointsQueue.Count!=0 && !isEndFound)
         {
 
-            Waypoint currentWaypoint = waypointsQueue.Dequeue();
-            print("Dequeuing " + currentWaypoint);
+            currentWaypoint = waypointsQueue.Dequeue();
             currentWaypoint.isExplored = true;
-            isEndFound = HaltIfSearchFound(currentWaypoint);
-            ExploreNeighbours(currentWaypoint);
+            isEndFound = HaltIfSearchFound();
+            ExploreNeighbours();
 
         }
     }
 
-    private bool HaltIfSearchFound(Waypoint currentWaypoint)
+    private bool HaltIfSearchFound()
     {
-        if (currentWaypoint == end)
+        if (currentWaypoint == endWaypoint)
         {
-            print("Found the last waypoint");//todo remove later
             return true;
         }
         return false;
     }
 
-    private void ExploreNeighbours(Waypoint waypoint)
+    private void ExploreNeighbours()
     {
         if(isEndFound)
         {
@@ -68,15 +81,10 @@ public class Pathfinder : MonoBehaviour
         }
         foreach(Vector2Int direction in directions)
         {
-            Vector2Int neighbourCoordinates = waypoint.GetGridPos() + direction;
-            print("Exploring : Cube(" + neighbourCoordinates.x + ", " + neighbourCoordinates.y + ")");
-            try
+            Vector2Int neighbourCoordinates = currentWaypoint.GetGridPos() + direction;
+            if(grid.ContainsKey(neighbourCoordinates))
             {
                 QueueNewNeighbour(neighbourCoordinates);
-            }
-            catch
-            {
-
             }
         }
     }
@@ -84,20 +92,18 @@ public class Pathfinder : MonoBehaviour
     private void QueueNewNeighbour(Vector2Int neighbourCoordinates)
     {
         Waypoint neighbour = grid[neighbourCoordinates];
-        if(!neighbour.isExplored)
+        if(!neighbour.isExplored && !waypointsQueue.Contains(neighbour))
         {
-            neighbour.SetTopColour(Color.blue);
-            print("Enqueing neighbour "+neighbour);
             waypointsQueue.Enqueue(neighbour);
+            neighbour.exploredFrom = currentWaypoint;
         }
 
     }
 
     private void ColourStartAndEnd()
     {
-        print("Colouring "+start);
-        start.SetTopColour(Color.green);
-        print("Colouring "+end);
-        end.SetTopColour(Color.black);
+        //todo consider moving to waypoint
+        startWaypoint.SetTopColour(Color.green);
+        endWaypoint.SetTopColour(Color.black);
     }
 }

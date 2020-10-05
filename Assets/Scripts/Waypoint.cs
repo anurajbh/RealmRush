@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //public okay here as this is a data class
+    public Waypoint exploredFrom;
     const int gridSize = 10;
     Vector2Int gridPos;
     public bool isExplored = false;
@@ -12,7 +13,6 @@ public class Waypoint : MonoBehaviour
     {
         return gridSize;
     }
-    // Update is called once per frame
     public Vector2Int GetGridPos()
     {
         return new Vector2Int(
@@ -23,5 +23,12 @@ public class Waypoint : MonoBehaviour
     {
         MeshRenderer meshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
         meshRenderer.material.color = color;
+    }
+    public void Update()
+    {
+        if(exploredFrom)
+        {
+            this.SetTopColour(Color.blue);//todo remove entirely
+        }
     }
 }
