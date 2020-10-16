@@ -6,13 +6,40 @@ public class Tower : MonoBehaviour
 {
     [SerializeField] Transform panObject;
     [SerializeField] Transform objectToLookAt;
-    public bool isFiring = false;
+    [SerializeField] float firingRange = 10f;
+    [SerializeField] ParticleSystem bullets;
     void Update()
     {
-        LookAtEnemy(objectToLookAt);
+        if (objectToLookAt)
+        {
+            LookAtEnemy(objectToLookAt);
+        }
+        else
+        {
+            Shoot(false);
+        }
+
     }
     public void LookAtEnemy(Transform objectToLook)
     {
         panObject.LookAt(objectToLook);
+        CheckIfShouldShoot(objectToLook);
+        
+    }
+    void CheckIfShouldShoot(Transform objectToShoot)
+    {
+        if (Vector3.Distance(objectToShoot.position, gameObject.transform.position) <= firingRange)
+        {
+            Shoot(true);
+        }
+        else
+        {
+            Shoot(false);
+        }
+    }
+    void Shoot(bool v)
+    {
+        ParticleSystem.EmissionModule emissionModule = bullets.emission;
+        emissionModule.enabled = v;
     }
 }

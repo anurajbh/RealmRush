@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hitpoints : MonoBehaviour
 {
-    public float HP;
+    public float HP = 10f;
     public void CheckForDeath()
     {
         if(HP <= 0f)
@@ -15,9 +15,11 @@ public class Hitpoints : MonoBehaviour
     public void AffectThisObject(float affect)
     {
         HP += affect;
+        CheckForDeath();
     }
     public void OnParticleCollision(GameObject other)
     {
-        print("Lol Im hit");
+        AffectThisObject(-1f);
+        print("Current HP is : " + HP);
     }
 }

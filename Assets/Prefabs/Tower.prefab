@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panObject: {fileID: 7598268611302425505}
   objectToLookAt: {fileID: 0}
-  isFiring: 0
+  firingRange: 40
+  bullets: {fileID: 2373444736219432641}
 --- !u!1 &7601208975873334305
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,6 +132,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae76d2af49e9c8a4db0e747e2d91be54, type: 3}
+--- !u!198 &2373444736219432641 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 591273489316632169, guid: ae76d2af49e9c8a4db0e747e2d91be54,
+    type: 3}
+  m_PrefabInstance: {fileID: 2937626181038739624}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7601208974237218761
 PrefabInstance:
   m_ObjectHideFlags: 0
