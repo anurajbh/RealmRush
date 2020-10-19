@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 1031276054455414230}
   - component: {fileID: 250679836341519159}
   - component: {fileID: 5441968558854183619}
+  - component: {fileID: 8901435789873651456}
   m_Layer: 0
   m_Name: EnemyCube
   m_TagString: Untagged
@@ -153,6 +154,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exploredFrom: {fileID: 0}
   isExplored: 0
+--- !u!65 &8901435789873651456
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809672541751908314}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.059046, y: 4.9788685, z: 9.019409}
+  m_Center: {x: -0.009339333, y: -2.4519005, z: 0.014915466}
 --- !u!1 &5986997737460764216
 GameObject:
   m_ObjectHideFlags: 0

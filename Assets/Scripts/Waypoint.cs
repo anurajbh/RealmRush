@@ -9,6 +9,7 @@ public class Waypoint : MonoBehaviour
     const int gridSize = 10;
     Vector2Int gridPos;
     public bool isExplored = false;
+    public bool isPlaceable = true;
     public int GetGridSize()
     {
         return gridSize;
@@ -23,5 +24,16 @@ public class Waypoint : MonoBehaviour
     {
         MeshRenderer meshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
         meshRenderer.material.color = color;
+    }
+    private void OnMouseOver()
+    {
+        if (Input.GetAxisRaw("Fire1") != 0)
+        {
+            if(isPlaceable)
+                print("Can place at " + gameObject.name);
+            else
+                print("Can't place here lol");
+        }
+        
     }
 }

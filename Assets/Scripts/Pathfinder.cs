@@ -41,24 +41,27 @@ public class Pathfinder : MonoBehaviour
     {
         startWaypoint.exploredFrom = startWaypoint;
         LoadTheBlocks();
-        ColourStartAndEnd();
         BreadthFirstSearch();
         CreateThePath();
     }
 
     private void CreateThePath()
     {
-        path.Add(endWaypoint);
+        SetAsPath(endWaypoint);//adding end waypoint to path
         Waypoint previousWaypoint = endWaypoint.exploredFrom;
         while(previousWaypoint!=startWaypoint)
         {
-            path.Add(previousWaypoint);
+            SetAsPath(previousWaypoint);
             previousWaypoint = previousWaypoint.exploredFrom;
         }
-        path.Add(previousWaypoint);
+        SetAsPath(previousWaypoint);//adding start waypoint to path
         path.Reverse();
     }
-
+    private void SetAsPath(Waypoint waypoint)
+    {
+        path.Add(waypoint);
+        waypoint.isPlaceable = false;
+    }
     private void BreadthFirstSearch()//implementation of the BFS algorithm
     {
         waypointsQueue.Enqueue(grid[startWaypoint.GetGridPos()]);
@@ -107,12 +110,5 @@ public class Pathfinder : MonoBehaviour
             neighbour.exploredFrom = currentWaypoint;
         }
 
-    }
-
-    private void ColourStartAndEnd()
-    {
-        //todo consider moving to waypoint
-        startWaypoint.SetTopColour(Color.green);
-        endWaypoint.SetTopColour(Color.black);
     }
 }
