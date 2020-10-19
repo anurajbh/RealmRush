@@ -5,10 +5,14 @@ using UnityEngine;
 public class Hitpoints : MonoBehaviour
 {
     public float HP = 10f;
+    [SerializeField] ParticleSystem hitParticlePrefab;
+    [SerializeField] ParticleSystem deathParticle;
     public void CheckForDeath()
     {
         if(HP <= 0f)
         {
+            ParticleSystem deathVFX = Instantiate(deathParticle, gameObject.transform.position, Quaternion.identity);
+            deathVFX.Play();
             Destroy(gameObject);
         }
     }
@@ -16,6 +20,7 @@ public class Hitpoints : MonoBehaviour
     {
         HP += affect;
         CheckForDeath();
+        hitParticlePrefab.Play();
     }
     public void OnParticleCollision(GameObject other)
     {

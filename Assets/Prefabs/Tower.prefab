@@ -1,20 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &7601208975935478538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7599847749760164815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bef5964091e4484ba9bb3ca99510327, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panObject: {fileID: 7598268611302425505}
-  firingRange: 40
-  bullets: {fileID: 2373444736219432641}
 --- !u!1 &7601208975873334305
 GameObject:
   m_ObjectHideFlags: 0
@@ -24,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7601208975873334304}
+  - component: {fileID: 8127834623088363261}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -47,6 +33,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8127834623088363261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7601208975873334305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bef5964091e4484ba9bb3ca99510327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panObject: {fileID: 7598268611302425505}
+  firingRange: 40
+  bullets: {fileID: 2373444736219432641}
 --- !u!1001 &2937626181038739624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73,6 +74,11 @@ PrefabInstance:
         type: 3}
       propertyPath: CollisionModule.collisionMessages
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 591273489316632169, guid: ae76d2af49e9c8a4db0e747e2d91be54,
+        type: 3}
+      propertyPath: CollisionModule.minKillSpeed
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 4653729151225093765, guid: ae76d2af49e9c8a4db0e747e2d91be54,
         type: 3}
@@ -154,7 +160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4101459293844584, guid: 8238921bafd389b44921fe80cc7f1f9d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.94
+      value: 5.94
       objectReference: {fileID: 0}
     - target: {fileID: 4101459293844584, guid: 8238921bafd389b44921fe80cc7f1f9d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -206,12 +212,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8238921bafd389b44921fe80cc7f1f9d, type: 3}
---- !u!1 &7599847749760164815 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1405215511811078, guid: 8238921bafd389b44921fe80cc7f1f9d,
-    type: 3}
-  m_PrefabInstance: {fileID: 7601208974237218761}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7598268611302425505 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4101459293844584, guid: 8238921bafd389b44921fe80cc7f1f9d,
@@ -235,7 +235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4676767254080446, guid: 4e889d43572027a409a3dab490438a22, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.94
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4676767254080446, guid: 4e889d43572027a409a3dab490438a22, type: 3}
       propertyPath: m_LocalPosition.z

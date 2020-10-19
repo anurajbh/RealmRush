@@ -10,6 +10,7 @@ public class Waypoint : MonoBehaviour
     Vector2Int gridPos;
     public bool isExplored = false;
     public bool isPlaceable = true;
+    public Tower towerPrefab;
     public int GetGridSize()
     {
         return gridSize;
@@ -30,9 +31,18 @@ public class Waypoint : MonoBehaviour
         if (Input.GetAxisRaw("Fire1") != 0)
         {
             if(isPlaceable)
+            {
                 print("Can place at " + gameObject.name);
+                Tower newTower = Instantiate(towerPrefab, gameObject.transform.position, Quaternion.identity);
+                newTower.transform.parent = GameObject.Find("Towers").transform;
+                isPlaceable = false;
+            }
+
             else
+            {
                 print("Can't place here lol");
+            }
+
         }
         
     }
