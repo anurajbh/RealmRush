@@ -20,6 +20,5 @@ public class Hitpoints : MonoBehaviour
     public void OnParticleCollision(GameObject other)
     {
         AffectThisObject(-1f);
-        print("Current HP is : " + HP);
     }
 }
