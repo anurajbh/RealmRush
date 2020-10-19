@@ -6255,6 +6255,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube(-1, -6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6000597017893037618, guid: 8b621ebd43315ef4da8d29a0d12cbac9,
+        type: 3}
+      propertyPath: m_Text
+      value: -1, -6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b621ebd43315ef4da8d29a0d12cbac9, type: 3}
 --- !u!4 &4247538120943891385 stripped
@@ -6329,11 +6334,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tower
-      objectReference: {fileID: 0}
-    - target: {fileID: 7601208975935478538, guid: f58f8e920f3155b4c9055e9a79845be4,
-        type: 3}
-      propertyPath: objectToLookAt
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f58f8e920f3155b4c9055e9a79845be4, type: 3}

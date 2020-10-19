@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panObject: {fileID: 7598268611302425505}
-  objectToLookAt: {fileID: 0}
   firingRange: 40
   bullets: {fileID: 2373444736219432641}
 --- !u!1 &7601208975873334305

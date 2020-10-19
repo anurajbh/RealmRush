@@ -1,15 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
     [SerializeField] Transform panObject;
-    [SerializeField] Transform objectToLookAt;
+
     [SerializeField] float firingRange = 10f;
     [SerializeField] ParticleSystem bullets;
+
+    //State of each tower
+    Transform objectToLookAt;
     void Update()
     {
+        objectToLookAt = SetTargetEnemy();
         if (objectToLookAt)
         {
             LookAtEnemy(objectToLookAt);
@@ -20,6 +25,25 @@ public class Tower : MonoBehaviour
         }
 
     }
+
+    private Transform SetTargetEnemy()
+    {
+        EnemyMovement[] enemies = FindObjectsOfType<EnemyMovement>();
+        if(enemies.Length==0)
+        {
+            return null;
+        }
+        Transform closestEnemy = enemies[0].transform;
+        for(int i =0; i<enemies.Length;i++)
+        {
+            if(Vector3.Distance(gameObject.transform.position, enemies[i].transform.position) < Vector3.Distance(gameObject.transform.position, closestEnemy.position))
+            {
+                closestEnemy = enemies[i].transform;
+            }
+        }
+        return closestEnemy;
+    }
+
     public void LookAtEnemy(Transform objectToLook)
     {
         panObject.LookAt(objectToLook);
@@ -28,7 +52,7 @@ public class Tower : MonoBehaviour
     }
     void CheckIfShouldShoot(Transform objectToShoot)
     {
-        if (Vector3.Distance(objectToShoot.position, gameObject.transform.position) <= firingRange)
+        if (Vector3.Distance(gameObject.transform.position, objectToShoot.position) <= firingRange)
         {
             Shoot(true);
         }
