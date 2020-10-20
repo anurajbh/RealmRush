@@ -2743,6 +2743,7 @@ GameObject:
   m_Component:
   - component: {fileID: 864800507}
   - component: {fileID: 864800506}
+  - component: {fileID: 864800508}
   m_Layer: 0
   m_Name: World
   m_TagString: Untagged
@@ -2845,6 +2846,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &864800508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864800505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d759af5f28b955242a03d3cf597a329e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 8127834623088363261, guid: f58f8e920f3155b4c9055e9a79845be4,
+    type: 3}
 --- !u!1001 &888508864
 PrefabInstance:
   m_ObjectHideFlags: 0
