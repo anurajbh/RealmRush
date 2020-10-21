@@ -2860,6 +2860,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 8127834623088363261, guid: f58f8e920f3155b4c9055e9a79845be4,
     type: 3}
+  towerLimit: 3
 --- !u!1001 &888508864
 PrefabInstance:
   m_ObjectHideFlags: 0
