@@ -12,7 +12,7 @@ public class TowerFactory : MonoBehaviour
         if (baseWaypoint.isPlaceable)
         {
             
-            if (towers.Count <= towerLimit)
+            if (towers.Count < towerLimit)
             {
                 InstantiateTower(baseWaypoint);
             }
@@ -22,20 +22,25 @@ public class TowerFactory : MonoBehaviour
             }
         }
 
-        else if(!baseWaypoint.isPlaceable)
-        {
-            print("Can't place here lol");
-        }
+    }
+    void InstantiateTower(Waypoint baseWaypoint)
+    {
+        Tower newTower = Instantiate(towerPrefab, baseWaypoint.transform.position, Quaternion.identity);
+        newTower.baseWaypoint = baseWaypoint;
+        baseWaypoint.isPlaceable = false;
+        newTower.transform.parent = GameObject.Find("Towers").transform;
+        towers.Enqueue(newTower);
+
+
+
     }
     void MoveExistingTower(Waypoint waypoint)
     {
-        Debug.Log("Limit reached");
-    }
-    private void InstantiateTower(Waypoint baseWaypoint)
-    {
-        Tower newTower = Instantiate(towerPrefab, baseWaypoint.transform.position, Quaternion.identity);
-        towers.Enqueue(newTower);
-        newTower.transform.parent = GameObject.Find("Towers").transform;
-        baseWaypoint.isPlaceable = false;
+        Tower oldTower = towers.Dequeue();
+        oldTower.baseWaypoint.isPlaceable = true;
+        waypoint.isPlaceable = false;
+        oldTower.baseWaypoint = waypoint;
+        oldTower.transform.position = waypoint.transform.position;
+        towers.Enqueue(oldTower);
     }
 }

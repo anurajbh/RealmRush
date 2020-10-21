@@ -10,13 +10,15 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         Pathfinder pathfinder = FindObjectOfType<Pathfinder>();
-        List<Waypoint> enemyPath = pathfinder.GetPath();
+        enemyPath = pathfinder.GetPath();
         transform.position = enemyPath[0].transform.position;
         StartCoroutine(MoveToWaypoints(enemyPath));
+        StartCoroutine(WaitUntilReaches());
     }
     private void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
+
     }
     IEnumerator MoveToWaypoints(List<Waypoint> Path)
     {
@@ -25,6 +27,12 @@ public class EnemyMovement : MonoBehaviour
             movePoint = waypoint.transform;
             yield return new WaitUntil(() => isAtPosition(waypoint.transform) == true);
         }
+    }
+    IEnumerator WaitUntilReaches()
+    {
+        yield return new WaitUntil(() => isAtPosition(enemyPath[(enemyPath.Count - 1)].transform) == true);
+        GetComponent<Hitpoints>().SelfDestruct(GetComponent<Hitpoints>().endParticle);
+
     }
     bool isAtPosition(Transform movePoint)
     {

@@ -27,7 +27,7 @@ public class Waypoint : MonoBehaviour
     }
     private void OnMouseOver()
     {
-        if (Input.GetAxisRaw("Fire1") != 0)
+        if (Input.GetAxisRaw("Fire1")!=0)
         {
             GameObject.FindObjectOfType<TowerFactory>().CheckToPlaceTower(this);
 

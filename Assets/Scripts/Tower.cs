@@ -12,6 +12,7 @@ public class Tower : MonoBehaviour
 
     //State of each tower
     Transform objectToLookAt;
+    public Waypoint baseWaypoint;
     void Update()
     {
         objectToLookAt = SetTargetEnemy();
