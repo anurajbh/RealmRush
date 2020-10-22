@@ -20,18 +20,20 @@ public class Hitpoints : MonoBehaviour
     {
         ParticleSystem deathVFX = Instantiate(deathParticle, gameObject.transform.position, Quaternion.identity);
         deathVFX.Play();
+        EnemySpawner.Instance.enemyCtr--;
+        EnemySpawner.Instance.DisplayCtr();
         Destroy(deathVFX.gameObject, deathVFX.main.duration);
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 
-    public void AffectThisObject(float affect)
+    public void DamageEnemy(float affect)
     {
-        HP += affect;
+        HP -= affect;
         CheckForDeath();
         hitParticlePrefab.Play();
     }
     public void OnParticleCollision(GameObject other)
     {
-        AffectThisObject(-1f);
+        DamageEnemy(1f);
     }
 }

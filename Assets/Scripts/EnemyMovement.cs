@@ -7,6 +7,7 @@ public class EnemyMovement : MonoBehaviour
     List<Waypoint> enemyPath = new List<Waypoint>();
     Transform movePoint;
     [SerializeField] float moveSpeed = 10f;
+    public float damage = 10f;
     void Start()
     {
         Pathfinder pathfinder = FindObjectOfType<Pathfinder>();

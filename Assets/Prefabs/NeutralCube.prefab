@@ -197,9 +197,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1470141298747155563}
-  - component: {fileID: 1825011563328146058}
   - component: {fileID: 5885334110737781630}
   - component: {fileID: 3918393704091925515}
+  - component: {fileID: -7025699640510428685}
   m_Layer: 0
   m_Name: NeutralCube
   m_TagString: Untagged
@@ -223,18 +223,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1825011563328146058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5370880956149030503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 235ec7111a261464ebf93d34db80925b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5885334110737781630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,8 +238,6 @@ MonoBehaviour:
   exploredFrom: {fileID: 0}
   isExplored: 0
   isPlaceable: 1
-  towerPrefab: {fileID: 8127834623088363261, guid: f58f8e920f3155b4c9055e9a79845be4,
-    type: 3}
 --- !u!65 &3918393704091925515
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -265,6 +251,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 9.059046, y: 4.9788685, z: 9.019409}
   m_Center: {x: -0.009339333, y: -2.4519005, z: 0.014915466}
+--- !u!114 &-7025699640510428685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5370880956149030503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 235ec7111a261464ebf93d34db80925b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3088325913010814658
 PrefabInstance:
   m_ObjectHideFlags: 0
