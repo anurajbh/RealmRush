@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class BaseHealth : MonoBehaviour
 {
     public float health = 100f;
-    [SerializeField] ParticleSystem particleSystem;
+    [SerializeField] ParticleSystem selfDestructSystem;
     Text text;
     public float score = 0f;
     private void OnTriggerEnter(Collider other)
@@ -28,7 +28,7 @@ public class BaseHealth : MonoBehaviour
     {
         if(health<=0)
         {
-            SelfDestruct(particleSystem);
+            SelfDestruct(selfDestructSystem);
         }
     }
 
