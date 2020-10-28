@@ -453,8 +453,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -26.06}
-  m_SizeDelta: {x: 765.97485, y: 168.65244}
+  m_AnchoredPosition: {x: 0, y: -42.7}
+  m_SizeDelta: {x: 765.97485, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &506631036
 MonoBehaviour:
@@ -488,7 +488,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Left-click on a node to place a new tower or move previously-existing towers.
+  m_Text: 'Protect your Base!
+
+    Left-click on a node to place a new tower or move
+    previously-existing towers.'
 --- !u!222 &506631037
 CanvasRenderer:
   m_ObjectHideFlags: 0
