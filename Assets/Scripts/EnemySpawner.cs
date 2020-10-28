@@ -9,21 +9,11 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] int secondsBetweenSpawns;
     [SerializeField] EnemyMovement enemyPrefab;
     public int enemyCtr;
-    Text text;
-    public static EnemySpawner Instance;
+    public Text ctrText;
     [SerializeField] AudioClip spawnSFX;
-    void Start()
+    void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-        text = GameObject.Find("EnemyCounter").GetComponent<Text>();
+        ctrText = GameObject.Find("EnemyCounter").GetComponent<Text>();
         DisplayCtr();
         StartCoroutine(SpawnEnemy(enemyPrefab));
     }
@@ -41,6 +31,6 @@ public class EnemySpawner : MonoBehaviour
     }
     public void DisplayCtr()
     {
-        text.text = enemyCtr.ToString();
+        ctrText.text = enemyCtr.ToString();
     }
 }

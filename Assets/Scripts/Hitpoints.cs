@@ -10,6 +10,7 @@ public class Hitpoints : MonoBehaviour
     public ParticleSystem endParticle;
     [SerializeField] AudioClip damageSFX;
     [SerializeField] AudioClip deathSFX;
+    public EnemySpawner enemySpawner;
     public void CheckForDeath()
     {
         if(HP <= 0f)
@@ -17,13 +18,16 @@ public class Hitpoints : MonoBehaviour
             SelfDestruct(deathParticle);
         }
     }
-
+    private void Awake()
+    {
+        enemySpawner = GameObject.Find("Enemies").GetComponent<EnemySpawner>();
+    }
     public void SelfDestruct(ParticleSystem deathParticle)
     {
         ParticleSystem deathVFX = Instantiate(deathParticle, gameObject.transform.position, Quaternion.identity);
         deathVFX.Play();
-        EnemySpawner.Instance.enemyCtr--;
-        EnemySpawner.Instance.DisplayCtr();
+        enemySpawner.enemyCtr--;
+        enemySpawner.DisplayCtr();
         Destroy(deathVFX.gameObject, deathVFX.main.duration);
         AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position);
         Destroy(this.gameObject);
