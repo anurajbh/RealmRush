@@ -10,9 +10,11 @@ public class BaseHealth : MonoBehaviour
     [SerializeField] ParticleSystem selfDestructSystem;
     Text text;
     public float score = 0f;
+    [SerializeField] AudioClip damageSFX;
     private void OnTriggerEnter(Collider other)
     {
         Damage(other.gameObject.GetComponentInParent<EnemyMovement>().damage);
+        GetComponent<AudioSource>().PlayOneShot(damageSFX);
         CheckForDeath();
     }
     private void Awake()

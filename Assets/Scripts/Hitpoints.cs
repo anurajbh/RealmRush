@@ -8,6 +8,8 @@ public class Hitpoints : MonoBehaviour
     [SerializeField] ParticleSystem hitParticlePrefab;
     [SerializeField] ParticleSystem deathParticle;
     public ParticleSystem endParticle;
+    [SerializeField] AudioClip damageSFX;
+    [SerializeField] AudioClip deathSFX;
     public void CheckForDeath()
     {
         if(HP <= 0f)
@@ -23,11 +25,13 @@ public class Hitpoints : MonoBehaviour
         EnemySpawner.Instance.enemyCtr--;
         EnemySpawner.Instance.DisplayCtr();
         Destroy(deathVFX.gameObject, deathVFX.main.duration);
+        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position);
         Destroy(this.gameObject);
     }
 
     public void DamageEnemy(float affect)
     {
+        GetComponent<AudioSource>().PlayOneShot(damageSFX);
         HP -= affect;
         CheckForDeath();
         hitParticlePrefab.Play();

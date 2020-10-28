@@ -11,6 +11,7 @@ public class EnemySpawner : MonoBehaviour
     public int enemyCtr;
     Text text;
     public static EnemySpawner Instance;
+    [SerializeField] AudioClip spawnSFX;
     void Start()
     {
         if (Instance == null)
@@ -31,6 +32,7 @@ public class EnemySpawner : MonoBehaviour
         while (true)
         {
             EnemyMovement spawnEnemy = Instantiate(enemyPrefab, gameObject.transform) as EnemyMovement;
+            GetComponent<AudioSource>().PlayOneShot(spawnSFX);
             enemyCtr++;
             DisplayCtr();
             yield return new WaitForSeconds(secondsBetweenSpawns);

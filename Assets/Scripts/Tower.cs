@@ -9,7 +9,6 @@ public class Tower : MonoBehaviour
 
     [SerializeField] float firingRange = 10f;
     [SerializeField] ParticleSystem bullets;
-
     //State of each tower
     Transform objectToLookAt;
     public Waypoint baseWaypoint;
@@ -24,7 +23,6 @@ public class Tower : MonoBehaviour
         {
             Shoot(false);
         }
-
     }
 
     private Transform SetTargetEnemy()
