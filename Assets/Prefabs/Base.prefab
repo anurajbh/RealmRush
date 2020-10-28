@@ -115,7 +115,8 @@ MonoBehaviour:
   selfDestructSystem: {fileID: 198537984209914932, guid: 1a51bfda454239a41afb7dee687c6ac0,
     type: 3}
   score: 0
-  damageSFX: {fileID: 0}
+  damageSFX: {fileID: 8300000, guid: 8209fb6f23ecf974388fb86b94db6bf8, type: 3}
+  defeat: {fileID: 0}
 --- !u!82 &6247108692265078627
 AudioSource:
   m_ObjectHideFlags: 0

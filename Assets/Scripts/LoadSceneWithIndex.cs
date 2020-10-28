@@ -8,6 +8,7 @@ public class LoadSceneWithIndex : MonoBehaviour
     public int indexToLoad;
     void Awake()
     {
+        if(GetComponent<Button>()!=null)
         GetComponent<Button>().onClick.AddListener(LoadTheScene);
     }
     void LoadTheScene()

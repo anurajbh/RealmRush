@@ -13,7 +13,6 @@ public class PauseGame : MonoBehaviour
 
     public Button playButton;
 
-    public Button restartButton;
 
     public Button exitButton;
 

@@ -11,6 +11,7 @@ public class BaseHealth : MonoBehaviour
     Text text;
     public float score = 0f;
     [SerializeField] AudioClip damageSFX;
+    public VictoryDefeat defeat;
     private void OnTriggerEnter(Collider other)
     {
         Damage(other.gameObject.GetComponentInParent<EnemyMovement>().damage);
@@ -44,6 +45,8 @@ public class BaseHealth : MonoBehaviour
         ParticleSystem deathVFX = Instantiate(deathParticle, gameObject.transform.position, Quaternion.identity);
         deathVFX.Play();
         Destroy(deathVFX.gameObject, deathVFX.main.duration);
+        defeat.gameObject.SetActive(true);
+        Time.timeScale = 0;
         Destroy(this.gameObject);
     }
 }
